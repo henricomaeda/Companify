@@ -1,7 +1,3 @@
 <?php include "templates/header.php" ?>
-<script>
-    const enviar = (mensagem = "") {
-        alert(mensagem);
-    }
-</script>
+<!-- INDEX -->
 <?php include "templates/footer.php" ?>

@@ -12,6 +12,7 @@
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
         <link rel="stylesheet" href="<?= $BASE_URL ?>../styles.css" />
         <link rel="icon" href="<?= $BASE_URL ?>./assets/Logo.png" />
+		<script type="text/javascript" src="<?= $BASE_URL ?>../javascript.js"></script>
         <title> Shopiest </title>
     </head>
     <body>
@@ -21,9 +22,9 @@
 					<img src="/assets/logo.png" /> Shopiest
 				</a>
 				<div class="search">
-					<form method="POST" action="<?= $BASE_URL ?>./procurar.php">
-						<input type="text" name="produto" placeholder="Procurar..." />
-						<button type="submit" class="float fa fa-search" />
+					<form method="POST" enctype="application/json" onsubmit="return search()" action="<?= $BASE_URL ?>./procurar.php">
+						<input type="text" id="product" name="product" placeholder="Procurar..." />
+						<button type="submit" class="float fa fa-search"></button>
 					</form>
 				</div>
 				<div class="right">

@@ -20,8 +20,8 @@
 						</a>
 					</nav>
 				</div>
-				<a href="https://www.flaticon.com/authors/freepik"><span class="underline"> All default icons created by Freepik - Flaticon </span></a>
-				<span> Copyright © 2022 Shopiest developed by Henrico Maeda </span>
+				<a href="https://www.flaticon.com/authors/freepik"><span class="underline"> Todos os ícones padrões foram criados por Freepik - Flaticon </span></a>
+				<span> Copyright © 2022 Shopiest desenvolvido por Henrico Maeda </span>
 			</nav>
         </footer>
     </body>
