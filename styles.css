@@ -1,8 +1,25 @@
+/* BODY */
+body {background-color: #e6e6e6; margin: 0px}
+article.body {
+	min-height: calc(100vh - 420px);
+	padding: 180px 20px 20px 20px;
+	z-index: 2;
+}
+
 /* HEADER */
 nav.header div.right {display: flex}
-body {background-color: #323136; margin: 0px}
-header {background-color: #17161a; padding: 12px}
-nav.header, a.logo, div.right a {align-items: center; display: flex}
+header:hover {padding: 26px 20px 26px 20px}
+nav.header, a.logo, div.right a, a.cart, div.languages {align-items: center; display: flex; z-index: 1}
+header {
+	box-shadow: 0px 2.6px 10px 2px #58595f;
+	background-color: #17161a;
+	transition: padding 600ms;
+	width: 100%;
+	z-index: 10;
+	padding: 20px;
+	position: fixed;
+}
+
 a.logo {color: white; font-size: 30px; transition: color 600ms}
 a:link, a:visited, a:hover, a:active {text-decoration: none}
 a.logo:hover img {transform: rotate(20deg)}
@@ -14,12 +31,9 @@ a.logo img {
 }
 
 div.search form {display: flex}
-div.search {
-	width: 100%;
-	margin: auto;
-	padding: 0px 30px 2px 30px;
-}
-
+div.right {margin-right: 40px; z-index: 0}
+div.right a span, a.cart span, a.logo span {white-space: nowrap}
+div.search {width: 50%; margin: auto; display: block}
 div.search input {
 	z-index: 2;
 	width: 100%;
@@ -29,7 +43,7 @@ div.search input {
 }
 
 div.search input:focus ~ button.float {
-	position: absolute;
+	position: fixed;
 	cursor: auto;
 	z-index: 1;
 	top: 50%;
@@ -50,31 +64,31 @@ div.search button {
 	cursor: pointer;
 }
 
-div.right a img.profile{width: 42px}
-div.right a img {width: 36px; padding: 0px 6px 0px 6px}
-div.right a:hover {font-size: 20px}
-div.right a {
+a.cart {padding: 0px 6px 0px 12px}
+a.cart span {padding: 0px 8px 0px 0px}
+div.right a img.profile {width: 42px}
+div.right a img, a.cart img {width: 36px; padding: 0px 6px 0px 6px}
+div.right a:hover, a.cart:hover {font-size: 20px}
+div.right a, a.cart {
 	color: white;
 	font-size: 0px;
 	transition: font-size 600ms;
 }
 
+div.languages:hover a img.language {width: 42px}
+div.languages a img.language {width: 0px; transition: width 600ms}
+img.language {width: 42px; padding: 0px 6px 0px 0px}
+
 /* INDEX */
 /* FOOTER */
-footer {
-	bottom: 0;
-	width: 100%;
-	position: fixed;
-	background-color: #17161a;
-}
-
+footer {width: 100%; background-color: #17161a}
 footer nav {
 	padding: 20px;
 	display: table;
 	margin: 0 auto;
 }
 
-footer nav span {
+footer nav span, span.author {
 	color: white;
 	padding: 6px;
 	display: block;
@@ -91,6 +105,7 @@ div.social-media a img {
 	margin: 0 auto;
 	display: block;
 }
+
 div.social-media a:hover span {font-size: 20px}
 div.social-media a span {
 	padding: 0px;
@@ -98,10 +113,20 @@ div.social-media a span {
 	transition: font-size 600ms;
 }
 
-span.underline:hover {text-decoration-color: white}
-span.underline {
-	text-underline-offset: 0.6em;
-	text-decoration: underline 0.10em;
-	text-decoration-color: transparent;
-	transition: 600ms
+footer div.flaticon {padding: 12px}
+footer div.flaticon img:hover {width: 400px; padding: 20px 0px 30px 0px;}
+footer div.flaticon img {
+	width: 320px;
+	margin: auto;
+	display: block;
+	padding: 10px 0px 20px 0px;
+	transition: width 600ms, padding 600ms;
+}
+a.underline:hover {text-decoration-color: white; font-size: 20px; margin: 10px}
+a.underline {
+	text-underline-offset: 0.30em;
+	text-decoration: transparent underline 0.06em;
+	transition: text-decoration 260ms, font-size 640ms, margin 420ms;
+	font-size: 16px;
+	color: white;
 }
