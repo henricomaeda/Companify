@@ -1,1 +1,1 @@
-<?php header("Location: ../pt_BR") ?>
+<?php header("Location: $_SERVER[HTTP_HOST]/../pt_BR") ?>
