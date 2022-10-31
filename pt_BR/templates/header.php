@@ -1,6 +1,13 @@
 <?php
+	session_start();
+	require_once("./models/Message.php");
+
 	$INDEX = "$_SERVER[HTTP_HOST]";
 	$BASE_URL = "http://$INDEX$_SERVER[REQUEST_URI]";
+	$message = new Message($BASE_URL);
+	$msg = $message -> getMessage();
+
+	if (!empty($_SESSION["MSG"])) $message -> clearMessage();
 ?>
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -35,10 +42,10 @@
 					</a>
 					<img class="default language" src="<?= $BASE_URL ?>/../../assets/languages/brazil.png" />
 				</div>
-				<a href="<?= $BASE_URL ?>/../conectar.php"><span> Meus produtos </span>
+				<a href="<?= $BASE_URL ?>/../mystuff.php"><span> Meus produtos </span>
 					<img class="profile" src="<?= $BASE_URL ?>/../../assets/flaticon/assets/products.png" />
 				</a>
-				<a href="<?= $BASE_URL ?>/../conectar.php"><span> Conectar </span>
+				<a href="<?= $BASE_URL ?>/../connection.php"><span> Conectar </span>
 					<img class="profile" src="<?= $BASE_URL ?>/../../assets/default.png" />
 				</a>
 			</div>
@@ -46,3 +53,10 @@
 	</header>
     <body>
 		<article class="body">
+			<?php if(!empty($msg)): ?>
+				<a href="<?= $BASE_URL ?>">
+					<span class="message">
+						<?= $msg ?>
+					</span>
+				</a>
+			<?php endif; ?>

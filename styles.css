@@ -79,6 +79,32 @@ div.languages:hover a img.language {width: 42px}
 div.languages a img.language {width: 0px; transition: width 600ms}
 img.language {width: 42px; padding: 0px 6px 0px 0px}
 
+/* MESSAGE */
+@keyframes display {
+	0% {
+		top: 60px;
+		opacity: 0%;
+	}
+}
+
+span.message:hover {padding: 16px}
+span.message {
+	animation: 600ms ease-out display;
+	background-color: rgba(23, 22, 26, 0.9);
+	transform: translate(-50%, -50%);
+	transition: padding 600ms;
+	border-radius: 6px;
+	text-align: center;
+	position: fixed;
+	font-size: 20px;
+	color: white;
+	padding: 10px;
+	margin: auto;
+	width: 90%;
+	left: 50%;
+	top: 126px;
+}
+
 /* INDEX */
 /* FOOTER */
 footer {width: 100%; background-color: #17161a}
