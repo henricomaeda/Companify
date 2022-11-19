@@ -1,4 +1,4 @@
-# Shopiest
+# Commercify
 
 > Sistema web de e-commerce com CSS avançado.
 
