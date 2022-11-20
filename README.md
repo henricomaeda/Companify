@@ -1,6 +1,6 @@
 # Commercify
 
-> Sistema web de e-commerce com CSS avançado.
+> Sistema web de comércios com CSS avançado.
 
 > Permite o cadastramento de usuários e comércios.
 
