@@ -2,9 +2,9 @@
 
 > Sistema web de e-commerce com CSS avançado.
 
-> Permite o cadastramento de usuários e produtos.
+> Permite o cadastramento de usuários e comércios.
 
-> Além do envolvimento de produtos no carrinho do usuário.
+> Além do envolvimento de produtos e detalhamento no mesmo.
 
 ## Observações do desenvolvimento
 
