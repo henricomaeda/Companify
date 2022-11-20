@@ -1,3 +1,6 @@
+			<button id="scrollButton" class="scrollButton" onclick="scrollToTop()">
+				<img src="<?= $BASE_URL ?>/../../assets/flaticon/assets/scroll.png" />
+			</button>
 		</article>
 	</body>
 	<footer>

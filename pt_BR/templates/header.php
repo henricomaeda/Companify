@@ -19,19 +19,16 @@
         <link rel="stylesheet" href="<?= $BASE_URL ?>/../../styles.css" />
         <link rel="icon" href="<?= $BASE_URL ?>/../../assets/logo.png" />
 		<script type="text/javascript" src="<?= $BASE_URL ?>/../../javascript.js"></script>
-        <title> Shopiest </title>
+        <title> Commercify </title>
     </head>
 	<header>
 		<nav class="header">
 			<a class="logo" href="<?= $INDEX ?>/../">
-				<img src="<?= $BASE_URL ?>/../../assets/logo.png" /><span> Shop!est </span>
-			</a>
-			<a class="cart" href="<?= $BASE_URL ?>/../carrinho.php">
-				<img src="<?= $BASE_URL ?>/../../assets/flaticon/assets/cart.png" /><span> Meu carrinho </span>
+				<img src="<?= $BASE_URL ?>/../../assets/logo.png" /><span> Commercify </span>
 			</a>
 			<div class="search">
 				<form method="POST" enctype="application/json" onsubmit="return search()" action="<?= $BASE_URL ?>/../procurar.php">
-					<input type="text" id="product" name="product" placeholder="Procurar produtos..." />
+					<input type="text" id="product" name="product" placeholder="Procurar comércios e produtos..." />
 					<button type="submit" class="float fa fa-search"></button>
 				</form>
 			</div>
@@ -42,10 +39,12 @@
 					</a>
 					<img class="default language" src="<?= $BASE_URL ?>/../../assets/languages/brazil.png" />
 				</div>
-				<a href="<?= $BASE_URL ?>/../mystuff.php"><span> Meus produtos </span>
+				<a href="<?= $BASE_URL ?>/../mycontent.php">
+					<span> Meus comércios </span>
 					<img class="profile" src="<?= $BASE_URL ?>/../../assets/flaticon/assets/products.png" />
 				</a>
-				<a href="<?= $BASE_URL ?>/../connection.php"><span> Conectar </span>
+				<a href="<?= $BASE_URL ?>/../connection.php">
+					<span> Conectar </span>
 					<img class="profile" src="<?= $BASE_URL ?>/../../assets/default.png" />
 				</a>
 			</div>

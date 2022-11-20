@@ -1,15 +1,15 @@
 /* BODY */
 body {background-color: #e6e6e6; margin: 0px}
 article.body {
-	min-height: calc(100vh - 420px);
-	padding: 180px 20px 20px 20px;
+	min-height: calc(100vh - 180px);
+	padding: 120px 20px 20px 20px;
 	z-index: 2;
 }
 
 /* HEADER */
 nav.header div.right {display: flex}
 header:hover {padding: 26px 20px 26px 20px}
-nav.header, a.logo, div.right a, a.cart, div.languages {align-items: center; display: flex; z-index: 1}
+nav.header, a.logo, div.right a, div.languages {align-items: center; display: flex; z-index: 1}
 header {
 	box-shadow: 0px 2.6px 10px 2px #58595f;
 	background-color: #17161a;
@@ -20,10 +20,16 @@ header {
 	position: fixed;
 }
 
-a.logo {color: white; font-size: 30px; transition: color 600ms}
 a:link, a:visited, a:hover, a:active {text-decoration: none}
+a.logo {
+	color: white;
+	font-size: 30px;
+	padding-right: 10px;
+	transition: color 600ms;
+}
+
 a.logo:hover img {transform: rotate(20deg)}
-a.logo:hover {color: #504f52}
+a.logo:hover {color: #2d2c30}
 a.logo img {
 	width: 42px;
 	padding: 0px 6px 0px 6px;
@@ -32,7 +38,7 @@ a.logo img {
 
 div.search form {display: flex}
 div.right {margin-right: 40px; z-index: 0}
-div.right a span, a.cart span, a.logo span {white-space: nowrap}
+div.right a span, a.logo span {white-space: nowrap}
 div.search {width: 50%; margin: auto; display: block}
 div.search input {
 	z-index: 2;
@@ -59,20 +65,25 @@ div.search button {
 	padding: 8px;
 	width: 60px;
 	border: 0px;
+	cursor: pointer;
 	border-color: white;
 	border-radius: 0px 6px 6px 0px;
-	cursor: pointer;
 }
 
-a.cart {padding: 0px 6px 0px 12px}
-a.cart span {padding: 0px 8px 0px 0px}
+div.right a img {width: 36px; padding: 0px 6px 0px 6px}
 div.right a img.profile {width: 42px}
-div.right a img, a.cart img {width: 36px; padding: 0px 6px 0px 6px}
-div.right a:hover, a.cart:hover {font-size: 20px}
-div.right a, a.cart {
+div.right a {
+	color: white;
+	font-size: 20px;
+}
+
+div.right a img {width: 36px; padding: 0px 6px 0px 6px}
+div.right a img.profile {width: 42px}
+div.right a:hover {font-size: 20px}
+div.right a {
 	color: white;
 	font-size: 0px;
-	transition: font-size 600ms;
+	transition: font-size 600ms ease-out;
 }
 
 div.languages:hover a img.language {width: 42px}
@@ -82,27 +93,28 @@ img.language {width: 42px; padding: 0px 6px 0px 0px}
 /* MESSAGE */
 @keyframes display {
 	0% {
-		top: 60px;
+		top: 82px;
 		opacity: 0%;
 	}
 }
 
-span.message:hover {padding: 16px}
+span.message:hover {padding: 16px; opacity: 80%}
 span.message {
 	animation: 600ms ease-out display;
 	background-color: rgba(23, 22, 26, 0.9);
 	transform: translate(-50%, -50%);
-	transition: padding 600ms;
+	transition: padding 600ms, opacity 600ms;
 	border-radius: 6px;
 	text-align: center;
 	position: fixed;
 	font-size: 20px;
-	color: white;
 	padding: 10px;
+	opacity: 60%;
 	margin: auto;
+	color: white;
 	width: 90%;
+	top: 132px;
 	left: 50%;
-	top: 126px;
 }
 
 /* INDEX */
@@ -155,4 +167,28 @@ a.underline {
 	transition: text-decoration 260ms, font-size 640ms, margin 420ms;
 	font-size: 16px;
 	color: white;
+}
+
+/* SCROLL */
+html {scroll-behavior: smooth}
+.scrollButton img {width: 100%; height: 100%}
+.scrollButton {
+	visibility: hidden;
+	position: fixed;
+	opacity: 0%;
+	bottom: 2%;
+	right: 2%;
+	width: 7%;
+	height: 10%;
+	padding: 1%;
+	border: none;
+	cursor: pointer;
+	border-radius: 10%;
+	background-color: #2d2c30;
+	transition: opacity 126ms, visibility 126ms, width 260ms, height 260ms;
+}
+
+.scrollButton:hover {
+	width: 8%;
+	height: 11%;
 }
