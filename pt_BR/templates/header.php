@@ -24,11 +24,14 @@
 	<header>
 		<nav class="header">
 			<a class="logo" href="<?= $INDEX ?>/../">
-				<img src="<?= $BASE_URL ?>/../../assets/logo.png" /><span> Commercify </span>
+				<img src="<?= $BASE_URL ?>/../../assets/logo.png" />
+				<div>
+					<span> Commercify </span>
+				</div>
 			</a>
 			<div class="search">
 				<form method="POST" enctype="application/json" onsubmit="return search()" action="<?= $BASE_URL ?>/../procurar.php">
-					<input type="text" id="product" name="product" placeholder="Procurar comércios e produtos..." />
+					<input type="text" id="search" name="search" placeholder="Procurar comércios e produtos..." />
 					<button type="submit" class="float fa fa-search"></button>
 				</form>
 			</div>
@@ -39,9 +42,10 @@
 					</a>
 					<img class="default language" src="<?= $BASE_URL ?>/../../assets/languages/brazil.png" />
 				</div>
-				<a href="<?= $BASE_URL ?>/../mycontent.php">
+				<a href="<?= $BASE_URL ?>/../my_trades.php">
 					<span> Meus comércios </span>
-					<img class="profile" src="<?= $BASE_URL ?>/../../assets/flaticon/assets/products.png" />
+					<img src="<?= $BASE_URL ?>/../../assets/flaticon/assets/my_trades
+					.png" />
 				</a>
 				<a href="<?= $BASE_URL ?>/../connection.php">
 					<span> Conectar </span>
@@ -53,9 +57,9 @@
     <body>
 		<article class="body">
 			<?php if(!empty($msg)): ?>
-				<a href="<?= $BASE_URL ?>">
-					<span class="message">
+				<button class="message" onclick="hideMessage()" href="<?= $BASE_URL ?>">
+					<span id="message" class="message">
 						<?= $msg ?>
 					</span>
-				</a>
+				</button>
 			<?php endif; ?>

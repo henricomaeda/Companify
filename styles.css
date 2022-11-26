@@ -1,4 +1,4 @@
-/* BODY */
+/* Corpo do componente */
 body {background-color: #e6e6e6; margin: 0px}
 article.body {
 	min-height: calc(100vh - 180px);
@@ -6,7 +6,7 @@ article.body {
 	z-index: 2;
 }
 
-/* HEADER */
+/* Cabeçalho do componente */
 nav.header div.right {display: flex}
 header:hover {padding: 26px 20px 26px 20px}
 nav.header, a.logo, div.right a, div.languages {align-items: center; display: flex; z-index: 1}
@@ -14,71 +14,56 @@ header {
 	box-shadow: 0px 2.6px 10px 2px #58595f;
 	background-color: #17161a;
 	transition: padding 600ms;
-	width: 100%;
-	z-index: 10;
-	padding: 20px;
 	position: fixed;
+	padding: 20px;
+	z-index: 10;
+	width: 100%;
 }
 
 a:link, a:visited, a:hover, a:active {text-decoration: none}
-a.logo {
+a.logo div {
+	border-radius: 100% 90% 90% 90%;
+	background-color: #2d2c30;
+}
+
+a.logo img {
+	transition: transform 600ms, padding 600ms, width 600ms;
+	padding: 0px 6px 0px 6px;
+	z-index: 10;
+	width: 46px;
+}
+
+a.logo:hover img {
+	padding: -2px 6px -2px 6px;
+	transform: rotate(20deg);
+	width: 52px;
+}
+
+a.logo span {
+	z-index: 6;
+	left: -26px;
 	color: white;
 	font-size: 30px;
-	padding-right: 10px;
-	transition: color 600ms;
+	position: relative;
+	margin-right: -16px;
+	transition: font-size 600ms, left 620ms, margin-right 620ms;
 }
 
-a.logo:hover img {transform: rotate(20deg)}
-a.logo:hover {color: #2d2c30}
-a.logo img {
-	width: 42px;
-	padding: 0px 6px 0px 6px;
-	transition: transform 600ms;
+a.logo:hover span {
+	left: -10px;
+	margin-right: 0px;
+	font-size: 30.26px;
 }
 
-div.search form {display: flex}
 div.right {margin-right: 40px; z-index: 0}
 div.right a span, a.logo span {white-space: nowrap}
-div.search {width: 50%; margin: auto; display: block}
-div.search input {
-	z-index: 2;
-	width: 100%;
-	border: 0px;
-	padding: 8px;
-	border-radius: 6px 0px 0px 6px;
-}
-
-div.search input:focus ~ button.float {
-	position: fixed;
-	cursor: auto;
-	z-index: 1;
-	top: 50%;
-	left: 50%;
-	width: 100%;
-	height: 100%;
-	transform: translate(-50%, -50%);
-	background-color: rgba(0, 0, 0, 0.6);
-	transition: width 200ms ease-out;
-}
-
-div.search button {
-	padding: 8px;
-	width: 60px;
-	border: 0px;
-	cursor: pointer;
-	border-color: white;
-	border-radius: 0px 6px 6px 0px;
-}
-
 div.right a img {width: 36px; padding: 0px 6px 0px 6px}
-div.right a img.profile {width: 42px}
+div.right a img.profile {width: 42.6px}
 div.right a {
 	color: white;
 	font-size: 20px;
 }
 
-div.right a img {width: 36px; padding: 0px 6px 0px 6px}
-div.right a img.profile {width: 42px}
 div.right a:hover {font-size: 20px}
 div.right a {
 	color: white;
@@ -90,7 +75,40 @@ div.languages:hover a img.language {width: 42px}
 div.languages a img.language {width: 0px; transition: width 600ms}
 img.language {width: 42px; padding: 0px 6px 0px 0px}
 
-/* MESSAGE */
+/* Campo de busca do cabeçalho */
+div.search {width: 50%; margin: auto; display: block}
+div.search input {
+	z-index: 2;
+	width: 100%;
+	border: 0px;
+	padding: 8px;
+	border-radius: 6px 0px 0px 6px;
+}
+
+div.search form {display: flex}
+div.search input:focus ~ button.float {
+	top: 50%;
+	left: 50%;
+	z-index: 1;
+	width: 100%;
+	height: 100%;
+	cursor: auto;
+	position: fixed;
+	transform: translate(-50%, -50%);
+	transition: width 200ms ease-out;
+	background-color: rgba(0, 0, 0, 0.6);
+}
+
+div.search button {
+	padding: 8px;
+	width: 60px;
+	border: 0px;
+	cursor: pointer;
+	border-color: white;
+	border-radius: 0px 6px 6px 0px;
+}
+
+/* Exibimento da mensagem */
 @keyframes display {
 	0% {
 		top: 82px;
@@ -98,18 +116,19 @@ img.language {width: 42px; padding: 0px 6px 0px 0px}
 	}
 }
 
-span.message:hover {padding: 16px; opacity: 80%}
+button.message {position: absolute; top: 0px; left: 0px; border: 0px}
+span.message:hover {padding: 16px; background-color: rgba(23, 22, 26, 0.90)}
 span.message {
+	transition: padding 600ms, background-color 600ms, width 600ms, opacity 600ms, top 600ms;
+	background-color: rgba(23, 22, 26, 0.462);
 	animation: 600ms ease-out display;
-	background-color: rgba(23, 22, 26, 0.9);
 	transform: translate(-50%, -50%);
-	transition: padding 600ms, opacity 600ms;
 	border-radius: 6px;
 	text-align: center;
+	font-size: 3.6vh;
 	position: fixed;
-	font-size: 20px;
+	cursor: pointer;
 	padding: 10px;
-	opacity: 60%;
 	margin: auto;
 	color: white;
 	width: 90%;
@@ -117,8 +136,26 @@ span.message {
 	left: 50%;
 }
 
-/* INDEX */
-/* FOOTER */
+/* Índice do componente */
+div.component {display: flex}
+div.component div.commerce:hover {border-radius: 2vh}
+div.component div.commerce {
+	width: 45%;
+	height: 10%;
+	padding: 2%;
+	margin: 0px 1% 0px 1%;
+	background-color: black;
+	border-radius: 6vh 2vh 6vh 2vh;
+	transition: border-radius 620ms;
+}
+
+div.commerce span {
+	font-size: 3.6vh;
+	color: white;
+	width: 100%;
+}
+
+/* Rodapé do componente */
 footer {width: 100%; background-color: #17161a}
 footer nav {
 	padding: 20px;
@@ -169,7 +206,7 @@ a.underline {
 	color: white;
 }
 
-/* SCROLL */
+/* Rolagem do componente */
 html {scroll-behavior: smooth}
 .scrollButton img {width: 100%; height: 100%}
 .scrollButton {
