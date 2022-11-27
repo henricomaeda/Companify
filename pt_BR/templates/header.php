@@ -30,7 +30,7 @@
 				</div>
 			</a>
 			<div class="search">
-				<form method="POST" enctype="application/json" onsubmit="return search()" action="<?= $BASE_URL ?>/../procurar.php">
+				<form method="POST" enctype="application/json" action="<?= $BASE_URL ?>/../procurar.php">
 					<input type="text" id="search" name="search" placeholder="Procurar comércios e produtos..." />
 					<button type="submit" class="float fa fa-search"></button>
 				</form>
@@ -56,10 +56,3 @@
 	</header>
     <body>
 		<article class="body">
-			<?php if(!empty($msg)): ?>
-				<button class="message" onclick="hideMessage()" href="<?= $BASE_URL ?>">
-					<span id="message" class="message">
-						<?= $msg ?>
-					</span>
-				</button>
-			<?php endif; ?>

@@ -1,7 +1,8 @@
 /* Corpo do componente */
+html {font-family: Arial, Helvetica, sans-serif}
 body {background-color: #e6e6e6; margin: 0px}
 article.body {
-	min-height: calc(100vh - 180px);
+	min-height: calc(100vh - 160px);
 	padding: 120px 20px 20px 20px;
 	z-index: 2;
 }
@@ -11,7 +12,7 @@ nav.header div.right {display: flex}
 header:hover {padding: 26px 20px 26px 20px}
 nav.header, a.logo, div.right a, div.languages {align-items: center; display: flex; z-index: 1}
 header {
-	box-shadow: 0px 2.6px 10px 2px #58595f;
+	box-shadow: 0px 1.26px 10px 2px #000000bd;
 	background-color: #17161a;
 	transition: padding 600ms;
 	position: fixed;
@@ -76,16 +77,18 @@ div.languages a img.language {width: 0px; transition: width 600ms}
 img.language {width: 42px; padding: 0px 6px 0px 0px}
 
 /* Campo de busca do cabeçalho */
-div.search {width: 50%; margin: auto; display: block}
+div.search {width: 100%; margin: auto; display: block}
 div.search input {
 	z-index: 2;
 	width: 100%;
 	border: 0px;
 	padding: 8px;
+	margin: 0px 0px 0px 60px;
 	border-radius: 6px 0px 0px 6px;
 }
 
 div.search form {display: flex}
+div.search input:focus {margin: 0px 50px 0px 60px}
 div.search input:focus ~ button.float {
 	top: 50%;
 	left: 50%;
@@ -105,35 +108,8 @@ div.search button {
 	border: 0px;
 	cursor: pointer;
 	border-color: white;
+	margin: 0px 50px 0px 0px;
 	border-radius: 0px 6px 6px 0px;
-}
-
-/* Exibimento da mensagem */
-@keyframes display {
-	0% {
-		top: 82px;
-		opacity: 0%;
-	}
-}
-
-button.message {position: absolute; top: 0px; left: 0px; border: 0px}
-span.message:hover {padding: 16px; background-color: rgba(23, 22, 26, 0.90)}
-span.message {
-	transition: padding 600ms, background-color 600ms, width 600ms, opacity 600ms, top 600ms;
-	background-color: rgba(23, 22, 26, 0.462);
-	animation: 600ms ease-out display;
-	transform: translate(-50%, -50%);
-	border-radius: 6px;
-	text-align: center;
-	font-size: 3.6vh;
-	position: fixed;
-	cursor: pointer;
-	padding: 10px;
-	margin: auto;
-	color: white;
-	width: 90%;
-	top: 132px;
-	left: 50%;
 }
 
 /* Índice do componente */
@@ -153,6 +129,21 @@ div.commerce span {
 	font-size: 3.6vh;
 	color: white;
 	width: 100%;
+}
+
+/* Janela de conexão */
+div.connection {justify-content: space-evenly; display: flex;}
+div.connection form {
+	box-shadow: 0px 0px 12.62px -10px #000000;
+	background-color: white;
+	border-radius: 1em;
+	text-align: center;
+	width: 40vh;
+	height: 40vh;
+}
+
+div.connection span {
+	font-size: 3.62vh;
 }
 
 /* Rodapé do componente */
@@ -206,26 +197,53 @@ a.underline {
 	color: white;
 }
 
-/* Rolagem do componente */
-html {scroll-behavior: smooth}
-.scrollButton img {width: 100%; height: 100%}
-.scrollButton {
-	visibility: hidden;
-	position: fixed;
-	opacity: 0%;
-	bottom: 2%;
-	right: 2%;
-	width: 7%;
-	height: 10%;
-	padding: 1%;
-	border: none;
-	cursor: pointer;
-	border-radius: 10%;
-	background-color: #2d2c30;
-	transition: opacity 126ms, visibility 126ms, width 260ms, height 260ms;
+/* Exibimento da mensagem */
+@keyframes display {
+	0% {
+		bottom: -20%;
+		opacity: 0%;
+	}
 }
 
-.scrollButton:hover {
-	width: 8%;
-	height: 11%;
+button.message img {width: 1.62em; padding-right: 0.62em}
+button.message:hover {padding: 1em; opacity: 26%}
+button.message {
+	border: 0px;
+	left: 1.26em;
+	opacity: 100%;
+	display: flex;
+	bottom: 1.32em;
+	color: white;
+	position: fixed;
+	max-width: 30em;
+	cursor: pointer;
+	padding: 0.60em;
+	font-size: 2.26vh;
+	text-align: justify;
+	align-items: center;
+	word-wrap: break-word;
+	border-radius: 0.62em;
+	animation: 600ms ease-out display;
+	background-color: rgb(39, 38, 43);
+	transition: padding 600ms, opacity 260ms, bottom 600ms;
+}
+
+/* Rolagem do componente */
+html {scroll-behavior: smooth}
+.scrollButton img {width: 16em}
+.scrollButton:hover {padding: 5.62em; opacity: 42%}
+.scrollButton {
+	right: 6em;
+	border: 0px;
+	bottom: 6.62em;
+	opacity: 100%;
+	display: flex;
+	position: fixed;
+	cursor: pointer;
+	padding: 4.20em;
+	font-size: 0.32vh;
+	visibility: hidden;
+	border-radius: 4.62em;
+	background-color: rgb(39, 38, 43);
+	transition: padding 600ms, opacity 260ms, bottom 600ms;
 }

@@ -1,5 +1,11 @@
+			<?php if(!empty($msg)): ?>
+				<button class="message" id="message" onclick="hideMessage()">
+					<img src="<?= $BASE_URL ?>/../../assets/flaticon/assets/<?= $_SESSION["MSG_STATUS"] ?>.png" />
+					<span><?= $msg ?></span>
+				</button>
+			<?php endif; ?>
 			<button id="scrollButton" class="scrollButton" onclick="scrollToTop()">
-				<img src="<?= $BASE_URL ?>/../../assets/flaticon/assets/scroll.png" />
+				<img src="<?= $BASE_URL ?>/../../assets/flaticon/assets/scroll_up.png" />
 			</button>
 		</article>
 	</body>

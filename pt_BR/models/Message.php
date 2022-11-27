@@ -9,8 +9,12 @@
 		}
 		
 		// Definindo a mensagem e redirecionamento.
-		public function setMessage($MSG, $redirect = "index.php") {
+		public function setMessage($sucess = true, $redirect = "index.php", $MSG) {
 			$_SESSION["MSG"] = $MSG;
+			
+			if ($sucess) $_SESSION["MSG_STATUS"] = "sucess";
+			else $_SESSION["MSG_STATUS"] = "error";
+
 			if ($redirect != "return") header("Location: $this->URL" . "/../" . $redirect);
 			else header("Location: $_SERVER[HTTP_REFERER]");
 		}
