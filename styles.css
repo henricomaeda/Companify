@@ -132,18 +132,83 @@ div.commerce span {
 }
 
 /* Janela de conexão */
-div.connection {justify-content: space-evenly; display: flex;}
+div.connection {justify-content: space-evenly; display: flex}
 div.connection form {
 	box-shadow: 0px 0px 12.62px -10px #000000;
 	background-color: white;
-	border-radius: 1em;
+	height: max-content;
+	border-radius: 1vh;
 	text-align: center;
+	padding: 4.26vh;
 	width: 40vh;
-	height: 40vh;
 }
 
-div.connection span {
+div.connection span.title {
+	display: block;
 	font-size: 3.62vh;
+}
+
+div.connection hr {
+	width: 80%;
+	margin-top: 2.60vh;
+	margin-bottom: 2vh;
+	border-top: 0.06vh solid rgb(0, 0, 0);
+}
+
+div.connection a:hover {padding: 0.60vh}
+div.connection a {
+	margin: auto;
+	color: blue;
+	display: block;
+	margin-top: 3.2vh;
+	font-size: 2.70vh;
+	width: max-content;
+	transition: padding 600ms;
+}
+
+div.connection div {position: relative}
+div.connection input {
+	width: 100%;
+	border: none;
+	margin: 1.26vh 0;
+	outline: none;
+	color: white;
+	font-size: 1.92vh;
+	border-radius: 1vh;
+	padding: 1.82vh 2.26vh;
+	box-sizing: border-box;
+	border: 0.2vh solid #ccc;
+	transition: border 600ms, color 260ms;
+}
+
+div.connection input:valid,
+div.connection input:focus {color: #17161a}
+div.connection input:focus {border: 0.2vh solid rgb(0, 0, 0)}
+div.connection label {
+	left: 2.62vh;
+	bottom: 3.142vh;
+	font-size: 2vh;
+	position: absolute;
+	pointer-events: none;
+	background-color: white;
+	transition: transform 600ms, padding 1s, bottom 600ms;
+}
+
+div.connection input:valid ~ label,
+div.connection input:focus ~ label {
+	bottom: 6.126vh;
+	padding: 0vh 1vh 0vh 1vh;
+	transform: translateX(-1vh);
+}
+
+div.connection input#submit:hover {opacity: 90%; padding: 2.20vh}
+div.connection input#submit {
+	border: none;
+	color: white;
+	cursor: pointer;
+	font-size: 2.62vh;
+	background-color: #17161a;
+	transition: opacity 260ms, padding 260ms;
 }
 
 /* Rodapé do componente */
@@ -209,10 +274,10 @@ button.message img {width: 1.62em; padding-right: 0.62em}
 button.message:hover {padding: 1em; opacity: 26%}
 button.message {
 	border: 0px;
-	left: 1.26em;
+	left: 4.2vh;
 	opacity: 100%;
 	display: flex;
-	bottom: 1.32em;
+	bottom: 4.2vh;
 	color: white;
 	position: fixed;
 	max-width: 30em;
@@ -231,16 +296,16 @@ button.message {
 /* Rolagem do componente */
 html {scroll-behavior: smooth}
 .scrollButton img {width: 16em}
-.scrollButton:hover {padding: 5.62em; opacity: 42%}
+.scrollButton:hover {padding: 3vh; opacity: 42%}
 .scrollButton {
-	right: 6em;
 	border: 0px;
-	bottom: 6.62em;
+	right: 4.2vh;
+	bottom: 4.2vh;
 	opacity: 100%;
 	display: flex;
 	position: fixed;
 	cursor: pointer;
-	padding: 4.20em;
+	padding: 2.26vh;
 	font-size: 0.32vh;
 	visibility: hidden;
 	border-radius: 4.62em;
