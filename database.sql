@@ -22,7 +22,7 @@ create table `commercify`.`trades` (
 	`use_email` varchar(200) not null,
 	PRIMARY KEY (`tra_id`),
 	INDEX `fk_trades_users_idx` (`use_email` ASC),
-	CONSTRAint `fk_trades_users`
+	CONSTRAINT `fk_trades_users`
 		FOREIGN KEY (`use_email`)
 		REFERENCES `commercify`.`users` (`use_email`)
 		ON DELETE NO ACTION
@@ -39,7 +39,7 @@ create table `commercify`.`products` (
 	`tra_id` int not null,
 	PRIMARY KEY (`pro_id`),
 	INDEX `fk_products_trades1_idx` (`tra_id` ASC),
-	CONSTRAint `fk_products_trades1`
+	CONSTRAINT `fk_products_trades1`
 		FOREIGN KEY (`tra_id`)
 		REFERENCES `commercify`.`trades` (`tra_id`)
 		ON DELETE NO ACTION

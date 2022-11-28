@@ -191,14 +191,14 @@ div.connection label {
 	position: absolute;
 	pointer-events: none;
 	background-color: white;
-	transition: transform 600ms, padding 1s, bottom 600ms;
+	transition: transform 600ms, padding 600ms, bottom 600ms;
 }
 
 div.connection input:valid ~ label,
 div.connection input:focus ~ label {
 	bottom: 6.126vh;
 	padding: 0vh 1vh 0vh 1vh;
-	transform: translateX(-1vh);
+	transform: translateX(-2vh);
 }
 
 div.connection input#submit:hover {opacity: 90%; padding: 2.20vh}

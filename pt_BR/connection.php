@@ -2,6 +2,7 @@
 	require_once("./templates/header.php");
 	// $message -> setMessage(true, "return", "Seja muito bem-vindo, usuário!");
 ?>
+
 <div class="connection">
 	<form method="POST" enctype="application/json" action="<?= $BASE_URL ?>/../my_account.php">
 		<span class="title"> Conectar </span>
