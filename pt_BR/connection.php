@@ -1,10 +1,28 @@
 <?php
 	require_once("./templates/header.php");
-	// $message -> setMessage(true, "return", "Seja muito bem-vindo, usuário!");
+
+	// if (isset($_POST["name"]) && isset($_POST["email"]) && isset($_POST["password"])) {
+	// 	$name = $_POST["name"];
+	// 	$email = $_POST["email"];
+	// 	$password = $_POST["password"];
+	// 	$sql = "insert into users (use_email, use_name, use_password) values ('$email', '$name', '$password')";
+
+	// 	try {
+	// 		require_once("../database.php");
+	// 		$conn->query($sql);
+	// 		$message -> setMessage(true, "profile.php", "Seja muito bem-vindo (a), $name.");
+	// 	}
+	// 	catch (exception $e) {
+	// 		$message -> setMessage(false, "return", $e->getMessage());
+	// 	}
+	// 	finally {
+	// 		$conn->close();
+	// 	}
+	// }
 ?>
 
 <div class="connection">
-	<form method="POST" enctype="application/json" action="<?= $BASE_URL ?>/../my_account.php">
+	<form method="POST" action="<?= $BASE_URL ?>/../connection_process.php">
 		<span class="title"> Conectar </span>
 		<hr />
 		<div>
@@ -21,7 +39,7 @@
 			<span> Esqueceu a senha? </span>
 		</a>
 	</form>
-	<form>
+	<form method="POST">
 		<span class="title"> Cadastrar </span>
 		<hr />
 		<div>

@@ -3,7 +3,7 @@ html {font-family: Arial, Helvetica, sans-serif}
 body {background-color: #e6e6e6; margin: 0px}
 article.body {
 	min-height: calc(100vh - 160px);
-	padding: 120px 20px 20px 20px;
+	padding: 132px 20px 20px 20px;
 	z-index: 2;
 }
 
@@ -155,15 +155,19 @@ div.connection hr {
 	border-top: 0.06vh solid rgb(0, 0, 0);
 }
 
-div.connection a:hover {padding: 0.60vh}
 div.connection a {
 	margin: auto;
-	color: blue;
 	display: block;
 	margin-top: 3.2vh;
 	font-size: 2.70vh;
 	width: max-content;
-	transition: padding 600ms;
+	color: rgb(86, 46, 206);
+	transition: padding 600ms, color 600ms;
+}
+
+div.connection a:hover {
+	padding: 0.60vh;
+	color: rgb(25, 25, 87);
 }
 
 div.connection div {position: relative}
