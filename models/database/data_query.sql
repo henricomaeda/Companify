@@ -7,10 +7,12 @@ drop table if exists `commercify`.`users`;
 
 create table `commercify`.`users` (
 	`use_email` varchar(200) not null,
-	`use_name` varchar(200) not null,
+	`use_name` varchar(20) not null,
+	`use_lastname` varchar(200) null,
 	`use_password` varchar(200) not null,
 	`use_description` varchar(200) null,
 	`use_picture` varchar(200) null,
+	`use_token` varchar(200) null,
 	PRIMARY KEY (`use_email`)
 ) ENGINE = InnoDB;
 

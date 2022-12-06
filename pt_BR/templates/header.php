@@ -1,13 +1,17 @@
 <?php
 	session_start();
 	require_once("./models/Message.php");
+	require_once("./dao/UserDAO.php");
 
 	$INDEX = "$_SERVER[HTTP_HOST]";
 	$BASE_URL = "http://$INDEX$_SERVER[REQUEST_URI]";
-	$message = new Message($BASE_URL);
+	
+	$message = new Message();
 	$msg = $message -> getMessage();
-
 	if (!empty($_SESSION["MSG"])) $message -> clearMessage();
+
+	$userDao = new UserDAO();
+	$userData = $userDao -> verifyToken(false);
 ?>
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -42,15 +46,26 @@
 					</a>
 					<img class="default language" src="<?= $BASE_URL ?>/../../assets/languages/brazil.png" />
 				</div>
-				<a href="<?= $BASE_URL ?>/../my_trades.php">
+				<a href="<?= $BASE_URL ?>/../trades.php">
 					<span> Meus comércios </span>
-					<img src="<?= $BASE_URL ?>/../../assets/flaticon/assets/my_trades
+					<img src="<?= $BASE_URL ?>/../../assets/flaticon/assets/trades
 					.png" />
 				</a>
-				<a href="<?= $BASE_URL ?>/../connection.php">
-					<span> Conectar </span>
-					<img class="profile" src="<?= $BASE_URL ?>/../../assets/default.png" />
-				</a>
+				<?php if (!empty($_SESSION["use_token"])): ?>
+					<a href="<?= $BASE_URL ?>/../profile.php">
+						<span><?= $userData -> name ?></span>
+						<img class="profile" src="<?= $BASE_URL ?>/../../assets/default.png" />
+					</a>
+					<a href="<?= $BASE_URL ?>/../logout.php">
+						<span> Desconectar </span>
+						<img src="<?= $BASE_URL ?>/../../assets/flaticon/assets/logout.png" />
+					</a>
+				<?php else: ?>
+					<a href="<?= $BASE_URL ?>/../auth.php">
+						<span> Conectar </span>
+						<img class="profile" src="<?= $BASE_URL ?>/../../assets/default.png" />
+					</a>
+				<?php endif; ?>
 			</div>
 		</nav>
 	</header>

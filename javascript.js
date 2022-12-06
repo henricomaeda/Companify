@@ -22,3 +22,15 @@ const scrollDisplay = () => {
 	if (scrollView) scrollButton.style.visibility = "visible";
 	else scrollButton.style.visibility = "hidden";
 }
+
+// Marcado como sem sobrenome.	
+const noLastname = () => {
+	if (document.getElementById("checkbox").checked == true) {
+		document.getElementById("lastname").required = false;
+		document.getElementById("lastname").readOnly = true;
+	}
+	else {
+		document.getElementById("lastname").required = true;
+		document.getElementById("lastname").readOnly = false;
+	}
+}

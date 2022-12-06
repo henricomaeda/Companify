@@ -2,12 +2,12 @@
 <div class="component">
 	<div class="commerce">
 		<span>
-			Hello buddy!
+			Comércios
 		</span>
 	</div>
 	<div class="commerce">
 		<span>
-			...
+			Produtos
 		</span>
 	</div>
 	<div class="commerce">

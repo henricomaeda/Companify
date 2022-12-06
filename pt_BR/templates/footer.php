@@ -1,4 +1,4 @@
-			<?php if(!empty($msg)): ?>
+			<?php if (!empty($msg)): ?>
 				<button class="message" id="message" onclick="hideMessage()">
 					<img src="<?= $BASE_URL ?>/../../assets/flaticon/assets/<?= $_SESSION["MSG_STATUS"] ?>.png" />
 					<span><?= $msg ?></span>
