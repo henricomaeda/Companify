@@ -7,9 +7,13 @@ article.body {
 	z-index: 2;
 }
 
+.round {
+	border-radius: 100%;
+	object-fit: cover;
+}
+
 /* Cabeçalho do componente */
 nav.header div.right {display: flex}
-header:hover {padding: 26px 20px 26px 20px}
 nav.header, a.logo, div.right a, div.languages {align-items: center; display: flex; z-index: 1}
 header {
 	box-shadow: 0px 1.26px 10px 2px #000000bd;
@@ -28,15 +32,15 @@ a.logo div {
 }
 
 a.logo img {
-	transition: transform 600ms, padding 600ms, width 600ms;
+	transition: transform 600ms, margin 600ms, width 600ms;
 	padding: 0px 6px 0px 6px;
 	z-index: 10;
 	width: 46px;
 }
 
 a.logo:hover img {
-	padding: -2px 6px -2px 6px;
 	transform: rotate(20deg);
+	margin: -2.79px 0px -2.79px 0px;
 	width: 52px;
 }
 
@@ -59,7 +63,7 @@ a.logo:hover span {
 div.right {margin-right: 40px; z-index: 0}
 div.right a span, a.logo span {white-space: nowrap}
 div.right a img {width: 36px; padding: 0px 6px 0px 6px}
-div.right a img.profile {width: 42.6px}
+div.right a img.profile {width: 42.6px; height: 42.6px}
 div.right a {
 	color: white;
 	font-size: 20px;
@@ -82,7 +86,7 @@ div.search input {
 	z-index: 2;
 	width: 100%;
 	border: 0px;
-	padding: 8px;
+	padding: 10px 10px 10px 18.62px;
 	margin: 0px 0px 0px 60px;
 	border-radius: 6px 0px 0px 6px;
 }
@@ -112,25 +116,51 @@ div.search button {
 	border-radius: 0px 6px 6px 0px;
 }
 
-/* Índice do componente */
-div.component {display: flex}
-div.component div.commerce:hover {border-radius: 2vh}
-div.component div.commerce {
-	width: 45%;
-	height: 10%;
-	padding: 2%;
-	margin: 0px 1% 0px 1%;
-	background-color: black;
-	border-radius: 6vh 2vh 6vh 2vh;
-	transition: border-radius 620ms;
+/* Componente personalizado */
+@keyframes wave {
+	from {transform: rotate(0deg)}
+	from {transform: rotate(360deg)}
 }
 
-div.commerce span {
-	font-size: 3.6vh;
+div.wrapper {
+	width: 122vh;
+	height: 12vh;
+	overflow: hidden;
+	position: relative;
+	margin: auto auto 2.69vh auto;
+	border-radius: 5.26vh 5.26vh 2vh 2vh;
+	transition: height 600ms, border-radius 600ms;
+	background-image: linear-gradient(to top, #17161a 0%, #45434b 100%);
+}
+
+div.wrapper:hover {
+	height: 15vh;
+	border-radius: 4.26vh 4.26vh 2vh 2vh;
+}
+
+div.wave {
+	top: -25%;
+	left: 50%;
+	width: 120vh;
+	height: 160vh;
+	position: absolute;
+	margin-left: -70vh;
+	margin-top: -130vh;
+	border-radius: 35%;
+	animation: wave 15s infinite linear;
+	background-image: linear-gradient(to top, #4305ff 0%, #ff0062 100%);
+}
+
+div.wrapper div.title {
+	transform: translate(-50%, -50%);
+	position: absolute;
+	font-size: 3.26vh;
 	color: white;
-	width: 100%;
+	left: 50%;
+	top: 50%;
 }
 
+/* Índice do componente */
 /* Janela de conexão */
 div.connection {justify-content: space-evenly; display: flex}
 div.connection form {
@@ -172,14 +202,15 @@ div.connection a:hover {
 }
 
 div.connection div {position: relative}
-div.connection input,
+div.connection input {margin: 1.32vh 0vh}
+
 div.profile input,
+div.connection input,
 div.profile textarea.description {
 	width: 100%;
 	border: none;
 	outline: none;
 	color: white;
-	margin: 1.62vh 0;
 	font-size: 1.92vh;
 	border-radius: 1vh;
 	padding: 1.82vh 2.26vh;
@@ -194,7 +225,7 @@ div.connection input:focus {border: 0.2vh solid rgb(0, 0, 0)}
 div.connection label {
 	left: 2.62vh;
 	font-size: 2vh;
-	bottom: 3.46vh;
+	bottom: 3.2vh;
 	position: absolute;
 	border-radius: 20vh;
 	pointer-events: none;
@@ -207,47 +238,6 @@ div.connection input:focus ~ label {
 	bottom: 6.82vh;
 	padding: 0vh 1vh 0vh 1vh;
 	transform: translateX(-2vh);
-}
-
-div.lastname {display: flex; margin: 1.62vh 0vh 2.62vh 0.62vh}
-div.lastname div.checkmark {
-	transition: background-color 120ms;
-	background-color: #ccc;
-	border-radius: 0.42vh;
-	height: 3.26vh;
-	width: 3.42vh;
-}
-
-div.lastname div.checkmark span {
-	top: 0.4vh;
-	left: 1.2vh;
-	opacity: 0%;
-	width: 0.56vh;
-	height: 1.42vh;
-	position: absolute;
-	display: inline-block;
-	transform: rotate(45deg);
-	transition: opacity 120ms;
-	border-right: 0.60vh solid white;
-	border-bottom: 0.60vh solid white;
-}
-
-div.lastname input:checked ~ div.checkmark {background-color: rgb(0, 0, 0)}
-div.lastname input:checked ~ div.checkmark span {opacity: 100%}
-div.lastname input {
-	position: absolute;
-	cursor: pointer;
-	height: 3.26vh;
-	width: 3.26vh;
-	z-index: 1;
-	opacity: 0;
-	top: -40%;
-	left: 0%;
-}
-
-div.lastname div.subject {
-	margin: 0.24vh 0vh 0vh 1.2vh;
-	font-size: 2.42vh;
 }
 
 div.connection input#submit:hover, input#submit:hover {opacity: 90%; padding: 2.20vh}
@@ -263,49 +253,138 @@ div.profile input#submit {
 }
 
 /* Janela de perfil */
-div.profile {
-	width: 100%;
-	display: flex;
-	justify-content: space-around;
+div.profile {display: flex; justify-content: space-evenly}
+div.profile div.profile_component {width: 55vh}
+
+@keyframes rotation {
+	0%   {transform: rotate(0deg)}
+	100% {transform: rotate(360deg)}
+}
+
+div.profile div.picture {
+	width: 26vh;
+	height: 26vh;
+	position: relative;
+	transition: margin 600ms;
+	margin: 0vh auto 0.25vh auto;
+}
+
+div.profile img {
+    top: 0vh;
+	left: 50%;
+    bottom: 0vh;
+    width: 20vh;
+    height: 20vh;
+    margin: auto;
+    position: absolute;
+	transform: translateX(-50%);
+	-webkit-transform: translateX(-50%);
+	transition: height 600ms, width 600ms;
+}
+
+div.profile div.spin {
+    top: 0vh;
+	left: 0vh;
+	right: 0vh;
+    bottom: 0vh;
+	width: 22vh;
+	height: 22vh;
+    margin: auto;
+	position: absolute;
+	border-radius: 100vh;
+	background-color: white;
+	border: 0.32vh dotted #17161a;
+	animation-iteration-count: infinite;
+	animation: 8s linear 0ms 600 rotation;
+	transition: height 600ms, width 600ms;
+}
+
+div.profile div.picture:hover {margin: 3vh auto 4vh auto}
+div.profile div.picture:hover img {width: 23vh; height: 23vh}
+div.profile div.picture:hover div.spin {
+	border-style: dashed;
+	height: 26vh;
+	width: 26vh;
 }
 
 div.profile input,
 div.profile textarea.description {color: black}
 
-div.profile span,
-div.profile textarea.description {font-size: 2vh}
-
-div.profile div.profile_component {width: 45%}
-div.profile img {
-	width: 20vh;
-	height: 20vh;
-	margin: auto;
+div.profile textarea {text-align: justify}
+div.profile span {
+	font-size: 2vh;
 	display: block;
+	margin: 0vh 0vh 0.26vh 0.52vh;
 }
 
-div.profile span.fullname {
-	margin: 0vh 0vh 0.82vh 1.2vh;
-	text-align: justify;
-	font-size: 3.26vh;
-	display: block;
-}
-
+div.profile div.profile_component div.email,
 div.profile div.profile_component form.picture,
 div.profile div.profile_component form.password,
-div.profile div.profile_component div.fullname,
 div.profile div.profile_component form.information {
 	background-color: white;
 	border-radius: 1.26vh;
-	margin-bottom: 4.26vh;
+	margin-bottom: 3.62vh;
 	padding: 2vh;
 }
 
-div.profile form.profile_component {
-	background-color: white;
-	border-radius: 1.26vh;
-	height: max-content;
-	padding: 2vh;
-	width: 45%;
+div.profile_component input,
+div.profile_component textarea {
+	margin: 0vh 0vh 0vh 0vh;
+}
+
+div.profile div.profile_component div.email {padding-bottom: 0vh}
+div.profile input {margin: 0vh 0vh 2vh 0vh}
+
+/* Botão de sobrenome */
+div.lastname {
+	display: flex;
+	position: relative;
+	margin: 1.62vh 0vh 2vh 0.62vh;
+}
+
+div.lastname div.checkmark {
+	border: 0.1vh solid rgb(175, 174, 179);
+	transition: background-color 120ms;
+	background-color: #ccc;
+	border-radius: 0.42vh;
+	position: relative;
+	height: 3.46vh;
+	width: 3.46vh;
+}
+
+div.lastname div.checkmark span {
+	-webkit-transform: translateX(-50%);
+	transform: translateX(-50%);
+	position: absolute;
+	left: 50%;
+	opacity: 0;
+	width: 0.56vh;
+	height: 1.42vh;
+	transform: rotate(45deg);
+	transition: opacity 120ms;
+	border-right: 0.60vh solid white;
+	border-bottom: 0.60vh solid white;
+}
+
+div.connection div.checkmark span {left: 35.62%; top: 13.92%}
+div.lastname input:checked ~ div.checkmark {background-color: rgb(0, 0, 0)}
+div.lastname input:checked ~ div.checkmark span {opacity: 100%}
+div.lastname input {
+	position: absolute;
+	cursor: pointer;
+	height: 3.26vh;
+	width: 3.26vh;
+	z-index: 1;
+	opacity: 0;
+	top: -40%;
+	left: 0%;
+}
+
+div.profile div.lastname input {top: 0%}
+div.profile div.checkmark span {top: 0.48vh; left: 0.7vh}
+div.lastname div.subject {
+	margin: 0.50vh 0vh 0vh 1.2vh;
+	font-size: 2.42vh;
 }
 
 /* Rodapé do componente */

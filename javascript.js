@@ -24,13 +24,20 @@ const scrollDisplay = () => {
 }
 
 // Marcado como sem sobrenome.	
-const noLastname = () => {
-	if (document.getElementById("checkbox").checked == true) {
+const noLastname = (auto = false) => {
+	if (auto) {
 		document.getElementById("lastname").required = false;
 		document.getElementById("lastname").readOnly = true;
+		document.getElementById("checkbox").checked = true;
 	}
 	else {
-		document.getElementById("lastname").required = true;
-		document.getElementById("lastname").readOnly = false;
+		if (document.getElementById("checkbox").checked == true) {
+			document.getElementById("lastname").required = false;
+			document.getElementById("lastname").readOnly = true;
+		}
+		else {
+			document.getElementById("lastname").required = true;
+			document.getElementById("lastname").readOnly = false;
+		}
 	}
 }

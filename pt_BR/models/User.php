@@ -9,7 +9,9 @@
 		public $token;
 		
 		public function getFullName($user) {
-			return $user -> name . " " . $user -> lastname;
+			$fullName = $user -> name . " " . $user -> lastname;
+			if (!$user -> lastname) $fullName = $user -> name;
+			return $fullName;
 		}
 		
 		public function generatePassword($password) {

@@ -54,10 +54,12 @@
 		$valid_e = $email && !empty($email);
 		$valid_p = $password && !empty($password);
 		
-		if ($valid_e && $valid_p)
-			if ($userDao -> authenticateUser($email, $password)) $message -> setMessage(true, "profile.php", "Seja muito bem-vindo!");
+		if ($valid_e && $valid_p) {
+			$userName = $userDao -> authenticateUser($email, $password);
+			if ($userName) $message -> setMessage(true, "editprofile.php", "Seja muito bem-vindo, " . $userName .'!');
 			else $message -> setMessage(false, "return", "Usuário e/ou senha incorretos.");
+		}
 		else $message -> setMessage(false, "return", "Preencha todos os campos corretamente.");
 	}
-	else $message -> setMessage(false, "return", "Não foi possível realizar a autenticação.");
+	else $message -> setMessage(false, "auth.php", "Não foi possível realizar a autenticação.");
 ?>

@@ -12,6 +12,12 @@
 
 	$userDao = new UserDAO();
 	$userData = $userDao -> verifyToken(false);
+	if ($userData) {
+		$picture = $userData -> picture;
+	
+		if (!$picture) $picture = "default.png";
+		else $picture = "./users/" . $picture;
+	}
 ?>
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -23,18 +29,18 @@
         <link rel="stylesheet" href="<?= $BASE_URL ?>/../../styles.css" />
         <link rel="icon" href="<?= $BASE_URL ?>/../../assets/logo.png" />
 		<script type="text/javascript" src="<?= $BASE_URL ?>/../../javascript.js"></script>
-        <title> Commercify </title>
+        <title> Companify </title>
     </head>
 	<header>
 		<nav class="header">
 			<a class="logo" href="<?= $INDEX ?>/../">
 				<img src="<?= $BASE_URL ?>/../../assets/logo.png" />
 				<div>
-					<span> Commercify </span>
+					<span> Companify </span>
 				</div>
 			</a>
 			<div class="search">
-				<form method="POST" enctype="application/json" action="<?= $BASE_URL ?>/../procurar.php">
+				<form method="POST" enctype="application/json" action="<?= $BASE_URL ?>/../search.php">
 					<input type="text" id="search" name="search" placeholder="Procurar comércios e produtos..." />
 					<button type="submit" class="float fa fa-search"></button>
 				</form>
@@ -46,15 +52,15 @@
 					</a>
 					<img class="default language" src="<?= $BASE_URL ?>/../../assets/languages/brazil.png" />
 				</div>
-				<a href="<?= $BASE_URL ?>/../trades.php">
-					<span> Meus comércios </span>
-					<img src="<?= $BASE_URL ?>/../../assets/flaticon/assets/trades
+				<a href="<?= $BASE_URL ?>/../companies.php">
+					<span> Minhas empresas </span>
+					<img src="<?= $BASE_URL ?>/../../assets/flaticon/assets/companies
 					.png" />
 				</a>
 				<?php if (!empty($_SESSION["use_token"])): ?>
-					<a href="<?= $BASE_URL ?>/../profile.php">
+					<a href="<?= $BASE_URL ?>/../editprofile.php">
 						<span><?= $userData -> name ?></span>
-						<img class="profile" src="<?= $BASE_URL ?>/../../assets/default.png" />
+						<img class="profile <?php if ($picture) echo 'round' ?>" src="<?= $BASE_URL ?>/../../assets/<?= $picture ?>" />
 					</a>
 					<a href="<?= $BASE_URL ?>/../logout.php">
 						<span> Desconectar </span>

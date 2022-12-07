@@ -27,8 +27,10 @@
 		}
 		
 		public function setTokenToSession($token, $redirect = true) {
+			$user = new User();
 			$_SESSION["use_token"] = $token;
-			if ($redirect) $this -> message -> setMessage(true, "profile.php", "Seja muito bem-vindo!");
+			$userData = $this -> findByToken($token);
+			if ($redirect) $this -> message -> setMessage(true, "editprofile.php", "Seja muito bem-vindo, " . $user -> getFullName($userData) . '!');
 		}
 		
 		public function destroyToken() {
@@ -89,7 +91,7 @@
 		public function findByEmail($email) {
 			if ($email != "") {
 				$this -> database -> openConnection();
-				$stmt = $this -> database -> conn -> prepare("select use_email, use_lastname, use_name, use_password, use_description, use_picture, use_token from users where use_email = :use_email");
+				$stmt = $this -> database -> conn -> prepare("select use_email, use_name, use_lastname, use_password, use_description, use_picture, use_token from users where use_email = :use_email");
 				$stmt -> bindParam(":use_email", $email);
 				$stmt -> execute();
 				
@@ -143,7 +145,9 @@
 					$user -> token = $token;
 					$this -> update($user, false);
 					
-					return true;
+					$fullName = $user -> name . ' ' . $user -> lastname;
+					if (!$user -> lastname) $fullName = $user -> name;
+					return $fullName;
 				}
 			}
 			

@@ -12,7 +12,10 @@
 			if (empty($redirect) || $redirect == "index.php") $redirect = "/../";
 			$_SESSION["MSG"] = $MSG;
 
-			if ($redirect == "return") header("Location: $_SERVER[HTTP_REFERER]");
+			if ($redirect == "return") {
+				if (isset($_SERVER["HTTP_REFERER"])) header("Location: $_SERVER[HTTP_REFERER]");
+				else header("Location: $this->URL" . "/../");
+			}
 			else header("Location: $this->URL" . $redirect);
 		}
 		
