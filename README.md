@@ -1,6 +1,6 @@
 # Companify
 
-> Sistema web de comércios e e-commerce com CSS avançado.
+> Sistema web de comércios nos gerais com CSS avançado.
 
 > Permitindo o cadastramento de usuários, empresas e produtos.
 
