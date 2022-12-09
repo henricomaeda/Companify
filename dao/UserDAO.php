@@ -9,12 +9,13 @@
 		
 		public function __construct() {
 			$this -> message = new Message();
-			$this -> database = new Database("commercify");
+			$this -> database = new Database();
 		}
 		
 		public function buildUser($data) {
 			$user = new User();
 			
+			$user -> id = $data["use_id"];
 			$user -> email = $data["use_email"];
 			$user -> name = $data["use_name"];
 			$user -> lastname = $data["use_lastname"];
@@ -28,7 +29,7 @@
 		
 		public function setTokenToSession($token, $redirect = true) {
 			$_SESSION["use_token"] = $token;
-			$userData = $this -> findByToken($token);
+			$user = $this -> findByToken($token);
 			if ($redirect) $this -> message -> setMessage(true, "editprofile.php", "Seja muito bem-vindo, " . $userData -> name . '!');
 		}
 		
@@ -39,7 +40,15 @@
 		
 		public function create(User $user, $authUser = false) {
 			$this -> database -> openConnection();
-			$stmt = $this -> database -> conn -> prepare("insert into users values (
+			$stmt = $this -> database -> conn -> prepare("insert into users (
+				use_email,
+				use_name,
+				use_lastname,
+				use_password,
+				use_description,
+				use_picture,
+				use_token
+			) values (
 				:use_email,
 				:use_name,
 				:use_lastname,
@@ -67,20 +76,16 @@
 			$stmt = $this -> database -> conn -> prepare("update users set
 				use_name = :use_name,
 				use_lastname = :use_lastname,
-				use_password = :use_password,
 				use_description = :use_description,
-				use_picture = :use_picture,
 				use_token = :use_token
 				where use_email = :use_email
 			");
 			
 			$stmt -> bindParam(":use_name", $user -> name);
 			$stmt -> bindParam(":use_lastname", $user -> lastname);
-			$stmt -> bindParam(":use_password", $user -> password);
 			$stmt -> bindParam(":use_description", $user -> description);
-			$stmt -> bindParam(":use_picture", $user -> picture);
-			$stmt -> bindParam(":use_token", $user -> token);
 			$stmt -> bindParam(":use_email", $user -> email);
+			$stmt -> bindParam(":use_token", $user -> token);
 			$stmt -> execute();
 
 			$this -> database -> closeConnection();
@@ -90,7 +95,7 @@
 		public function findByEmail($email) {
 			if ($email != "") {
 				$this -> database -> openConnection();
-				$stmt = $this -> database -> conn -> prepare("select use_email, use_name, use_lastname, use_password, use_description, use_picture, use_token from users where use_email = :use_email");
+				$stmt = $this -> database -> conn -> prepare("select use_id, use_email, use_name, use_lastname, use_password, use_description, use_picture, use_token from users where use_email = :use_email");
 				$stmt -> bindParam(":use_email", $email);
 				$stmt -> execute();
 				
@@ -109,7 +114,7 @@
 		public function findByToken($token) {
 			if ($token != "") {
 				$this -> database -> openConnection();
-				$stmt = $this -> database -> conn -> prepare("select use_email, use_lastname, use_name, use_password, use_description, use_picture, use_token from users where use_token = :use_token");
+				$stmt = $this -> database -> conn -> prepare("select use_id, use_email, use_lastname, use_name, use_password, use_description, use_picture, use_token from users where use_token = :use_token");
 				$stmt -> bindParam(":use_token", $token);
 				$stmt -> execute();
 				
@@ -151,12 +156,13 @@
 			return false;
 		}
 		
-		public function changePassword(User $user) {
-			if (password_verify($password, $user -> password)) {
+		public function changePassword(User $userData, $old_password, $new_password) {
+			if (password_verify($old_password, $userData -> password)) {
+				$user = new User();
 				$this -> database -> openConnection();
 				$stmt = $this -> database -> conn -> prepare("update users set use_password = :use_password where use_email = :use_email");
-				$stmt -> bindParam(":use_password", $user -> password);
-				$stmt -> bindParam(":use_email", $user -> email);
+				$stmt -> bindParam(":use_password", $user -> generatePassword($new_password));
+				$stmt -> bindParam(":use_email", $userData -> email);
 				$stmt -> execute();
 				
 				$this -> database -> closeConnection();

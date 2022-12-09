@@ -29,13 +29,13 @@ header {
 
 a.logo:hover img {
 	width: 56.2px;
-	margin: -16px -8px -3px 0px;
+	margin: -5px -8px -5px 0px;
 }
 
 a.logo img {
-	padding: 0px 6px 0px 6px;
-	margin: -14px -8px -5px 0px;
 	transition: width 600ms, margin 600ms;
+	padding: 0px 6px 0px 6px;
+	margin-right: -8px;
 	z-index: 10;
 	width: 46px;
 }
@@ -57,23 +57,22 @@ div.right a {
 }
 
 /* Campo de busca do cabeçalho */
-div.search form {display: flex}
+div.search form {justify-content: center; display: flex}
 div.search {
 	width: 100%;
-	margin: auto;
-	display: block;
-	margin: 0px 26.6px 0px 26.6px;
+	position: relative;
+	margin: 0 26.6px 0 26.6px;
 }
 
 div.search input {
 	z-index: 2;
-	width: 100%;
+	width: 90%;
 	border: 0px;
 	border-radius: 6px 0px 0px 6px;
 	padding: 10px 10px 10px 18.62px;
 }
 
-div.search input:focus {margin: 0px 50px 0px 60px}
+div.search input:focus {width: calc(90% + 60px)}
 div.search input:focus ~ button.float {
 	top: 50%;
 	left: 50%;
@@ -298,7 +297,7 @@ div.profile span {
 	margin: 0vh 0vh 0.26vh 0.52vh;
 }
 
-div.profile div.profile_component div.email,
+div.profile div.profile_component form.email,
 div.profile div.profile_component form.picture,
 div.profile div.profile_component form.password,
 div.profile div.profile_component form.information {

@@ -6,6 +6,7 @@ drop table if exists `companify`.`companies`;
 drop table if exists `companify`.`users`;
 
 create table `companify`.`users` (
+	`use_id` int not null AUTO_INCREMENT,
 	`use_email` varchar(200) not null,
 	`use_name` varchar(20) not null,
 	`use_lastname` varchar(200) null,
@@ -13,20 +14,20 @@ create table `companify`.`users` (
 	`use_description` varchar(200) null,
 	`use_picture` varchar(200) null,
 	`use_token` varchar(200) null,
-	PRIMARY KEY (`use_email`)
+	PRIMARY KEY (`use_id`)
 ) ENGINE = InnoDB;
 
 create table `companify`.`companies` (
 	`com_id` int not null AUTO_INCREMENT,
-	`tra_name` varchar(200) not null,
-	`tra_description` varchar(200) null,
-	`tra_picture` varchar(200) null,
-	`use_email` varchar(200) not null,
+	`com_name` varchar(200) not null,
+	`com_description` varchar(200) null,
+	`com_picture` varchar(200) null,
+	`use_id` int not null,
 	PRIMARY KEY (`com_id`),
-	INDEX `fk_companies_users_idx` (`use_email` ASC),
+	INDEX `fk_companies_users_idx` (`use_id` ASC),
 	CONSTRAINT `fk_companies_users`
-		FOREIGN KEY (`use_email`)
-		REFERENCES `companify`.`users` (`use_email`)
+		FOREIGN KEY (`use_id`)
+		REFERENCES `companify`.`users` (`use_id`)
 		ON DELETE NO ACTION
 		ON UPDATE NO ACTION
 ) ENGINE = InnoDB;
@@ -34,7 +35,7 @@ create table `companify`.`companies` (
 create table `companify`.`products` (
 	`pro_id` int not null AUTO_INCREMENT,
 	`pro_name` varchar(200) not null,
-	`pro_price` DECIMAL not null,
+	`pro_price` decimal not null,
 	`pro_discount` int not null,
 	`pro_description` varchar(200) null,
 	`pro_picture` varchar(200) null,

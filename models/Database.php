@@ -6,11 +6,11 @@
 		private $dbname;
 		public $conn;
 		
-		public function __construct($database) {
+		public function __construct() {
 			$this -> servername = "localhost";
 			$this -> username = "root";
 			$this -> password = "";
-			$this -> dbname = $database;
+			$this -> dbname = "companify";
 		}
 		
 		public function openConnection() {

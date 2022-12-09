@@ -1,5 +1,6 @@
 <?php
 	class User {
+		public $id;
 		public $email;
 		public $name;
 		public $lastname;
@@ -37,6 +38,6 @@
 		public function findByToken($token);
 		public function verifyToken();
 		public function authenticateUser($email, $password);
-		public function changePassword(User $user);
+		public function changePassword(User $user, $old_password, $new_password);
 	}
 ?>
