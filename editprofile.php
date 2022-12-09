@@ -12,7 +12,7 @@
 	if (!$picture) $picture = "default.png";
 	else $picture = "./users/" . $picture;
 
-	$title = "Formulário autêntico de dados";
+	$title = $user -> getFullName($userData);
 	require_once("./templates/title_card.php");
 ?>
 <div class="profile">
@@ -21,7 +21,7 @@
 			<input type="hidden" name="type" value="update_picture">
 			<div class="picture">
 				<div class="spin"></div>
-				<img class="round" src="<?= $BASE_URL ?>/../../assets/<?= $picture ?>" />
+				<img class="round" src="<?= $BASE_URL ?>/../assets/<?= $picture ?>" />
 			</div>
 			<input type="file" name="picture" required />
 			<input type="submit" id="submit" value="Atualizar imagem" />

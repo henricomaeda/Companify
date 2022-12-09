@@ -21,23 +21,20 @@
 ?>
 <!DOCTYPE html>
 <html lang="pt-BR">
-    <head>
-        <meta charset="UTF-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<head>
+				<meta charset="UTF-8" />
+				<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+				<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
-        <link rel="stylesheet" href="<?= $BASE_URL ?>/../../styles.css" />
-        <link rel="icon" href="<?= $BASE_URL ?>/../../assets/logo.png" />
-		<script type="text/javascript" src="<?= $BASE_URL ?>/../../javascript.js"></script>
-        <title> Companify </title>
-    </head>
+				<link rel="stylesheet" href="<?= $BASE_URL ?>/../styles.css" />
+				<link rel="icon" href="<?= $BASE_URL ?>/../assets/logo.png" />
+		<script type="text/javascript" src="<?= $BASE_URL ?>/../functions.js"></script>
+				<title> Companify </title>
+		</head>
 	<header>
 		<nav class="header">
 			<a class="logo" href="<?= $INDEX ?>/../">
-				<img src="<?= $BASE_URL ?>/../../assets/logo.png" />
-				<div>
-					<span> Companify </span>
-				</div>
+				<img src="<?= $BASE_URL ?>/../assets/logo.png" />
 			</a>
 			<div class="search">
 				<form method="POST" enctype="application/json" action="<?= $BASE_URL ?>/../search.php">
@@ -46,34 +43,28 @@
 				</form>
 			</div>
 			<div class="right">
-				<div class="languages">
-					<a href="<?php echo str_replace("pt_BR", "en_US", $BASE_URL) ?>">
-						<img class="language" src="<?= $BASE_URL ?>/../../assets/languages/united_states.png" />
-					</a>
-					<img class="default language" src="<?= $BASE_URL ?>/../../assets/languages/brazil.png" />
-				</div>
 				<a href="<?= $BASE_URL ?>/../companies.php">
 					<span> Minhas empresas </span>
-					<img src="<?= $BASE_URL ?>/../../assets/flaticon/assets/companies
+					<img src="<?= $BASE_URL ?>/../assets/flaticon/assets/companies
 					.png" />
 				</a>
 				<?php if (!empty($_SESSION["use_token"])): ?>
 					<a href="<?= $BASE_URL ?>/../editprofile.php">
 						<span><?= $userData -> name ?></span>
-						<img class="profile <?php if ($picture) echo 'round' ?>" src="<?= $BASE_URL ?>/../../assets/<?= $picture ?>" />
+						<img class="profile round" src="<?= $BASE_URL ?>/../assets/<?= $picture ?>" />
 					</a>
 					<a href="<?= $BASE_URL ?>/../logout.php">
+						<img src="<?= $BASE_URL ?>/../assets/flaticon/assets/logout.png" />
 						<span> Desconectar </span>
-						<img src="<?= $BASE_URL ?>/../../assets/flaticon/assets/logout.png" />
 					</a>
 				<?php else: ?>
 					<a href="<?= $BASE_URL ?>/../auth.php">
 						<span> Conectar </span>
-						<img class="profile" src="<?= $BASE_URL ?>/../../assets/default.png" />
+						<img class="profile round" src="<?= $BASE_URL ?>/../assets/default.png" />
 					</a>
-				<?php endif; ?>
+				<?php endif ?>
 			</div>
 		</nav>
 	</header>
-    <body>
+		<body>
 		<article class="body">

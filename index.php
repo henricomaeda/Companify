@@ -1,1 +1,2 @@
-<?php header("Location: $_SERVER[HTTP_HOST]/../pt_BR") ?>
+<?php require_once("./templates/header.php") ?>
+<?php require_once("./templates/footer.php") ?>

@@ -1,7 +1,7 @@
 <?php
 	require_once("./templates/header.php");
 	require_once("./models/User.php");
-	require_once("./../models/Database.php");
+	require_once("./models/Database.php");
 	
 	class UserDAO implements UserDAOInterface {
 		private $message;
@@ -27,10 +27,9 @@
 		}
 		
 		public function setTokenToSession($token, $redirect = true) {
-			$user = new User();
 			$_SESSION["use_token"] = $token;
 			$userData = $this -> findByToken($token);
-			if ($redirect) $this -> message -> setMessage(true, "editprofile.php", "Seja muito bem-vindo, " . $user -> getFullName($userData) . '!');
+			if ($redirect) $this -> message -> setMessage(true, "editprofile.php", "Seja muito bem-vindo, " . $userData -> name . '!');
 		}
 		
 		public function destroyToken() {
@@ -145,9 +144,7 @@
 					$user -> token = $token;
 					$this -> update($user, false);
 					
-					$fullName = $user -> name . ' ' . $user -> lastname;
-					if (!$user -> lastname) $fullName = $user -> name;
-					return $fullName;
+					return $user -> name;
 				}
 			}
 			

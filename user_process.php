@@ -15,16 +15,14 @@
 					if (in_array($image["type"], $jpgArray)) $imageFile = imagecreatefromjpeg($image["tmp_name"]);
 					else $imageFile = imagecreatefrompng($image["tmp_name"]);
 					
+					$path = getcwd() . "/assets/users/";
 					$imageName = $user -> generatePictureName();
-					imagepng($imageFile, "../assets/users/" . $imageName);
+					imagepng($imageFile, $path . $imageName);
 
 					$file = $userData -> picture;
 					$userData -> picture = $imageName;
 
-					if ($file) {
-						$path = getcwd() . "/../assets/users/" . $file;
-						unlink($path);
-					}
+					if ($file) unlink($path . $file);
 				}
 				catch (Throwable $e) {
 					$error = "Arquivo corrompido.";
@@ -42,5 +40,5 @@
     else if ($type == "update_data") {
         
     }
-    else $message -> setMessage(false, "editprofile.php", "Não foi possível atualizar as informações.");
+	else $message -> setMessage(false, "editprofile.php", "Não foi possível atualizar as informações.");
 ?>
