@@ -22,7 +22,7 @@
 		if ($no_lastname) $valid_l = true;
 		if ($valid_n && $valid_l && $valid_e && $valid_p && $valid_c) {
 			if ($password == $confirm_password) {
-				if (!str_contains($name, ' ')) {
+				if (!function_exists("str_contains") || !str_contains($name, ' ')) {
 					if ($no_lastname || strlen(trim($lastname)) >= 2) {
 						if (!$userDao -> findByEmail($email)) {
 							$token = $user -> generateToken();
@@ -56,7 +56,7 @@
 		
 		if ($valid_e && $valid_p) {
 			$userName = $userDao -> authenticateUser($email, $password);
-			if ($userName) $message -> setMessage(true, "editprofile.php", "Seja muito bem-vindo, " . $userName .'!');
+			if ($userName) $message -> setMessage(true, "edit_profile.php", "Seja muito bem-vindo, " . $userName .'!');
 			else $message -> setMessage(false, "return", "Usuário e/ou senha incorretos.");
 		}
 		else $message -> setMessage(false, "return", "Preencha todos os campos corretamente.");

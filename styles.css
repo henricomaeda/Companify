@@ -2,13 +2,15 @@
 a:link, a:visited, a:hover, a:active {text-decoration: none}
 html {font-family: Arial, Helvetica, sans-serif}
 body {background-color: #e6e6e6; margin: 0px}
+.delete {background-color: #e63653}
 article.body {
 	min-height: calc(100vh - 160px);
 	padding: 132px 20px 20px 20px;
 	z-index: 2;
 }
 
-/* Configuração de ícone */
+/* Configuração de ícone e sombra */
+.shadow {box-shadow: 0px 0px 16px -9.6px #000000}
 .round {
 	border-radius: 100%;
 	object-fit: cover;
@@ -102,7 +104,7 @@ div.search button {
 }
 
 div.wrapper {
-	width: 122vh;
+	width: 122.82vh;
 	height: 12vh;
 	overflow: hidden;
 	position: relative;
@@ -140,10 +142,137 @@ div.wrapper div.title {
 }
 
 /* Índice do componente */
+/* Janela de empresas */
+form.companies {
+	width: 122.82vh;
+	padding: 2.62vh;
+	border-radius: 2vh;
+	box-sizing: border-box;
+	background-color: white;
+	margin: 0px auto 2.6vh auto;
+}
+
+form.companies label {
+	display: block;
+	font-size: 1.92vh;
+	margin: 0vh 0vh 0.26vh 0.36vh;
+}
+
+form.companies div {
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+}
+
+form.companies input {
+	width: 69%;
+	outline: none;
+	font-size: 1.92vh;
+	border-radius: 1vh;
+	padding: 1.82vh 2.26vh;
+	box-sizing: border-box;
+	border: 0.2vh solid #ccc;
+}
+
+form.companies input[type=submit]:hover {opacity: 90%; padding: 2.20vh}
+form.companies input[type=submit] {
+	width: 30%;
+	color: white;
+	cursor: pointer;
+	background-color: #17161a;
+	transition: opacity 260ms, padding 260ms;
+}
+
+div.companies {
+	width: 122.82vh;
+	display: flex;
+	flex-wrap: wrap;
+	margin: 0px auto 2.6vh auto;
+	justify-content: space-between;
+}
+
+div.company {
+	width: 30%;
+	padding: 2.62vh;
+	border-radius: 2vh;
+	position: relative;
+	height: max-content;
+	box-sizing: border-box;
+	margin: 2vh 0vh 2vh 0vh;
+	background-color: white;
+}
+
+div.company div.picture {
+	left: 0;
+	right: 0;
+	top: -2vh;
+	width: 22vh;
+	height: 22vh;
+	margin: auto;
+	display: flex;
+	position: absolute;
+	border-radius: 100%;
+	background-color: #fff;
+}
+
+div.company img {
+	width: 20vh;
+	height: 20vh;
+	margin: auto;
+}
+
+div.company div.details {margin: 20vh 0vh 2vh 0vh}
+div.company div.details span.title {
+	width: 22.6vh;
+	margin: 0vh auto 2vh auto;
+	display: block;
+	font-size: 2.26vh;
+	text-align: center;
+}
+
+.checked {color: orange}
+div.company div.details div.rating {
+	margin: 0.42vh auto 2vh auto;
+	display: block;
+	width: max-content;
+	font-size: 1.92vh;
+}
+
+div.company div.details input[type=submit]:hover {opacity: 90%; padding: 2.20vh}
+div.company div.details input[type=submit].other {background-color: #27252e}
+div.company div.details input[type=submit] {
+	width: 76%;
+	color: white;
+	border: none;
+	display: block;
+	cursor: pointer;
+	font-size: 1.92vh;
+	text-align: center;
+	border-radius: 1vh;
+	padding: 1.82vh 2.26vh;
+	margin: 1vh auto 0vh auto;
+	background-color: #1a1616;
+	transition: opacity 260ms, padding 260ms;
+}
+
+form.deleteButton input#submit:hover {width: 5.42vh; height: 5.42vh; opacity: 90%}
+form.deleteButton input#submit {
+	top: -2.6vh;
+	width: 5vh;
+	right: -2.6vh;
+	height: 5vh;
+	border: none;
+	cursor: pointer;
+	position: absolute;
+	background-size: contain;
+	background-color: transparent;
+	transition: width 120ms, height 120ms, opacity 120ms;
+	background-image: url("./assets/flaticon/assets/error.png");
+}
+
 /* Janela de conexão */
 div.connection {justify-content: space-evenly; display: flex}
 div.connection form {
-	box-shadow: 0px 0px 12.62px -10px #000000;
 	background-color: white;
 	height: max-content;
 	border-radius: 1vh;
@@ -232,8 +361,13 @@ div.profile input#submit {
 }
 
 /* Janela de perfil */
-div.profile {display: flex; justify-content: space-evenly}
 div.profile div.profile_component {width: 55vh}
+div.profile {
+	width: 122vh;
+	margin: auto;
+	display: flex;
+	justify-content: space-between;
+}
 
 @keyframes rotation {
 	0%   {transform: rotate(0deg)}

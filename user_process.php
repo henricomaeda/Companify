@@ -16,6 +16,8 @@
 					else $imageFile = imagecreatefrompng($image["tmp_name"]);
 					
 					$path = getcwd() . "/assets/users/";
+					if (!is_dir($path)) mkdir($path);
+					
 					$imageName = $user -> generatePictureName();
 					imagepng($imageFile, $path . $imageName);
 
@@ -61,10 +63,10 @@
         
 		$valid_n = $name && !empty($name);
 		$valid_l = $lastname && !empty($lastname);
-		$valid_d = $description && !empty($description);
+		$valid_d = $description && !empty($description) && strlen(trim($description)) > 0;
 
 		if ($valid_n && ($valid_l || $no_lastname)) {
-			if (!str_contains($name, ' ')) {
+			if (!function_exists("str_contains") || !str_contains($name, ' ')) {
 				if ($no_lastname || strlen(trim($lastname)) >= 2) {
 					$userData = $userDao -> verifyToken();
 
@@ -82,5 +84,5 @@
 		}
 		else $message -> setMessage(false, "return", "Preencha todos os campos corretamente.");
     }
-	else $message -> setMessage(false, "editprofile.php", "Não foi possível atualizar as informações.");
+	else $message -> setMessage(false, "edit_profile.php", "Não foi possível atualizar as informações.");
 ?>

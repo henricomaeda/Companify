@@ -30,7 +30,7 @@
 		public function setTokenToSession($token, $redirect = true) {
 			$_SESSION["use_token"] = $token;
 			$user = $this -> findByToken($token);
-			if ($redirect) $this -> message -> setMessage(true, "editprofile.php", "Seja muito bem-vindo, " . $userData -> name . '!');
+			if ($redirect) $this -> message -> setMessage(true, "edit_profile.php", "Seja muito bem-vindo, " . $user -> name . '!');
 		}
 		
 		public function destroyToken() {
@@ -77,6 +77,7 @@
 				use_name = :use_name,
 				use_lastname = :use_lastname,
 				use_description = :use_description,
+				use_picture = :use_picture,
 				use_token = :use_token
 				where use_email = :use_email
 			");
@@ -84,8 +85,9 @@
 			$stmt -> bindParam(":use_name", $user -> name);
 			$stmt -> bindParam(":use_lastname", $user -> lastname);
 			$stmt -> bindParam(":use_description", $user -> description);
-			$stmt -> bindParam(":use_email", $user -> email);
+			$stmt -> bindParam(":use_picture", $user -> picture);
 			$stmt -> bindParam(":use_token", $user -> token);
+			$stmt -> bindParam(":use_email", $user -> email);
 			$stmt -> execute();
 
 			$this -> database -> closeConnection();

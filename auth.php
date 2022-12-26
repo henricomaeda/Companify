@@ -1,9 +1,9 @@
 <?php
 	require_once("./templates/header.php");
-	if (!empty($_SESSION["use_token"])) $message -> setMessage(true, "profile.php", "");
+	if (!empty($_SESSION["use_token"])) $message -> setMessage(true, "edit_profile.php", "");
 ?>
 <div class="connection">
-	<form method="POST" action="<?= $BASE_URL ?>/../auth_process.php">
+	<form class="shadow" method="POST" action="./auth_process.php">
 		<input type="hidden" name="type" value="login">
 		<span class="title"> Conectar </span>
 		<hr />
@@ -17,11 +17,11 @@
 		</div>
 		<input type="submit" id="submit" value="Conectar" />
 		<hr />
-		<a href="<?= $BASE_URL ?>/../forgot.php">
+		<a href="./forgot.php">
 			<span> Esqueceu a senha? </span>
 		</a>
 	</form>
-	<form method="POST" action="<?= $BASE_URL ?>/../auth_process.php">
+	<form class="shadow" method="POST" action="./auth_process.php">
 		<input type="hidden" name="type" value="register">
 		<span class="title"> Cadastrar </span>
 		<hr />

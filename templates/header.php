@@ -1,10 +1,8 @@
 <?php
 	session_start();
+	$index = "$_SERVER[HTTP_HOST]";
 	require_once("./models/Message.php");
 	require_once("./dao/UserDAO.php");
-
-	$INDEX = "$_SERVER[HTTP_HOST]";
-	$BASE_URL = "http://$INDEX$_SERVER[REQUEST_URI]";
 	
 	$message = new Message();
 	$msg = $message -> getMessage();
@@ -12,51 +10,50 @@
 
 	$userDao = new UserDAO();
 	$userData = $userDao -> verifyToken(false);
+
 	if ($userData) {
 		$picture = $userData -> picture;
-	
-		if (!$picture) $picture = "default.png";
-		else $picture = "./users/" . $picture;
+		if ($picture) $picture = "./users/" . $picture;
+		else $picture = "default_user.png";
 	}
 ?>
 <!DOCTYPE html>
 <html lang="pt-BR">
-		<head>
-			<meta charset="UTF-8" />
-			<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-			<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-			<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
-			<link rel="stylesheet" href="<?= $BASE_URL ?>/../styles.css" />
-			<link rel="icon" href="<?= $BASE_URL ?>/../assets/logo.png" />
-			<script type="text/javascript" src="<?= $BASE_URL ?>/../functions.js"></script>
-			<title> Companify </title>
-		</head>
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+		<link rel="stylesheet" href="./styles.css" />
+		<link rel="icon" href="./assets/logo.png" />
+		<script type="text/javascript" src="./functions.js"></script>
+		<title> Companify </title>
+	</head>
 	<header>
 		<nav class="header">
-			<a class="logo" href="<?= $INDEX ?>/../">
-				<img src="<?= $BASE_URL ?>/../assets/logo.png" />
+			<a class="logo" href="<?= $index ?>/../">
+				<img src="./assets/logo.png" />
 			</a>
 			<div class="search">
-				<form method="POST" enctype="application/json" action="<?= $BASE_URL ?>/../search.php">
-					<input type="text" id="search" name="search" placeholder="Procurar comércios e produtos..." />
+				<form method="POST" enctype="application/json" action="./search.php">
+					<input type="text" id="search" name="search" placeholder="Procurar empresas e produtos..." />
 					<button type="submit" class="float fa fa-search"></button>
 				</form>
 			</div>
 			<div class="right">
-				<a href="<?= $BASE_URL ?>/../companies.php">
+				<a href="./my_companies.php">
 					<span> Minhas empresas </span>
-					<img src="<?= $BASE_URL ?>/../assets/flaticon/assets/companies
-					.png" />
+					<img src="./assets/flaticon/assets/companies.png" />
 				</a>
 				<?php if (!empty($_SESSION["use_token"])): ?>
-					<a href="<?= $BASE_URL ?>/../editprofile.php">
+					<a href="./edit_profile.php">
 						<span><?= $userData -> name ?></span>
-						<img class="profile round" src="<?= $BASE_URL ?>/../assets/<?= $picture ?>" />
+						<img class="profile round" src="./assets/<?= $picture ?>" />
 					</a>
 				<?php else: ?>
-					<a href="<?= $BASE_URL ?>/../auth.php">
+					<a href="./auth.php">
 						<span> Conectar </span>
-						<img class="profile round" src="<?= $BASE_URL ?>/../assets/default.png" />
+						<img class="profile round" src="./assets/default_user.png" />
 					</a>
 				<?php endif ?>
 			</div>
